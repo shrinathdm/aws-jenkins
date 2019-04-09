@@ -25,7 +25,7 @@ pipeline {
         }
         stage('Create Build Artifacts') {
           steps {
-            sh 'mvn build'
+            sh 'mvn package'
           }
         }
       }
