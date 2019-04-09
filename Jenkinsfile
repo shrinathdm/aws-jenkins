@@ -11,7 +11,7 @@ pipeline {
         sh 'mvn install'
       }
     }
-    stage('Cache clean')
+    stage('Cache clean'){
       steps{
 	sh 'mvn clean'
       }
