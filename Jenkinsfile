@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Cache clean'){
        steps{
-	 sh 'npm cache clean'
+	 sh 'npm cache verify'
       }
     }
     stage('Test and Build') {
