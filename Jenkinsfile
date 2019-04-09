@@ -6,11 +6,6 @@ pipeline {
     }
   }
   stages {
-    stage('Install Packages') {
-      steps {
-        sh 'install maven'
-      }
-    }
     stage('Cache clean'){
       steps{
 	sh 'mvn clean'
