@@ -5,22 +5,32 @@ pipeline {
       args '-p 20001-20100:3000'
     }
   }
+  environment {
+    CI = 'true'
+    HOME = '.'
+    npm_config_cache = 'npm-cache'
+  }
   stages {
-    stage('Cache clean'){
-      steps{
-	sh 'mvn clean'
+    stage('Install Packages') {
+      steps {
+        sh 'npm install'
       }
     }
+	stage('Cache clean')
+	  steps{
+	    sh 'npm cache clean'
+		}
+	}
     stage('Test and Build') {
       parallel {
-        stage('Run Tests') {
+	    stage('Create Build Artifacts') {
           steps {
-            sh 'mvn test'
+            sh 'npm run build'
           }
         }
-        stage('Create Build Artifacts') {
+        stage('Run Tests') {
           steps {
-            sh 'mvn package'
+            sh 'npm run test'
           }
         }
       }
