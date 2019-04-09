@@ -13,14 +13,14 @@ pipeline {
   stages {
     stage('Install Packages') {
       steps {
-        sh 'npm install'
+        sh 'npm init'
       }
     }
-	stage('Cache clean')
-	  steps{
-	    sh 'npm cache clean'
-		}
-	}
+    stage('Cache clean')
+      steps{
+	sh 'npm cache clean'
+      }
+    }
     stage('Test and Build') {
       parallel {
         stage('Run Tests') {
