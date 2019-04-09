@@ -16,11 +16,11 @@ pipeline {
         sh 'npm install'
       }
     }
-	stage('Cache clean')
-	  steps{
-	    sh 'npm cache clean'
-		}
-	}
+    stage('Cache clean'){
+       steps{
+	 sh 'npm cache clean'
+      }
+    }
     stage('Test and Build') {
       parallel {
 	    stage('Create Build Artifacts') {
